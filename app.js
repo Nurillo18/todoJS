@@ -33,6 +33,11 @@ elList.addEventListener("click", evte => {
 function renderTodo(arr, element) {
     element.innerHTML = "";
 
+     badge1.textContent = arr.length;
+     badge2.textContent = arr.filter(e => e.isComplete === true).length;
+     badge3.textContent = arr.filter(e => e.isComplete === false).length;
+
+
     arr.forEach(todo => {
         const newItem = document.createElement("li");
         const newButton = document.createElement("button");
@@ -44,7 +49,7 @@ function renderTodo(arr, element) {
             inputCheck.checked = true;
             newItem.style.textDecoration = "line-through";
         }
-         badge1.textContent = todos.length;
+
 
 
         inputCheck.type = "checkbox";
@@ -60,21 +65,6 @@ function renderTodo(arr, element) {
         newItem.appendChild(inputCheck);
         newItem.appendChild(newButton);
 
-        let count = 0;
-        let count3 = 0;
-        const isTrue = todos.filter(find => {
-            if(find.isComplete == true){
-                count++;
-
-            }else{
-                count3++
-            }
-            badge3.textContent = count3;
-            badge2.textContent = count;
-            badge1.textContent = todos.length;
-        });
-
-
 
 
 
@@ -86,7 +76,7 @@ elForm.addEventListener("submit", evt => {
     evt.preventDefault();
     const elInputVaal = elInput.value.trim();
     const todo = {
-        id:todos.length,
+        id:todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
         title:elInputVaal,
         isComplete:false
     };
@@ -94,8 +84,5 @@ elForm.addEventListener("submit", evt => {
     todos.push(todo);
     renderTodo(todos,elList);
     elInput.value = "";
-
-
-
 
 });
