@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color:#288BF7;
+    color: #111;
+    font-weight: bold;
+}
+
+body{
+    display: flex;
+    padding: 100px;
+}
+
+.list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-left: 40px;
+}
+
+.btns{
+    margin-top: 20px;
+}
+.form__input{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+}
+
+.form__button{
+    padding: 10px;
+    border-radius: 12px;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+    border-width: 4px;
+}
+.form__button:active {
+    color: red;
+}
+.all-btn{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+}
+
+.complate-btn{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+}
+.uncomplate-btn{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+}
+
+li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    outline: none;
+    width: 200px;
+    font-family: sans-serif;
+}
+
+.todo-checked{
+    position: absolute;
+    right: 79px;
+    top: 23px;
+}
+
+.delete-item{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid #3dfdf3;
+    border-top:  2px solid #3dfdf3;
+    border-left: 1px solid #3dfdf3;
+    border-right: 1px solid #3dfdf3;
+    outline: none;
+}
+.delete-item:active {
+    color: red;
+}
+
+li + li {
+    margin-top: 10px;
+}

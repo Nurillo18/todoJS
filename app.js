@@ -14,16 +14,16 @@ const badgeAll = document.querySelector(".badge1");
 const badgeComplate = document.querySelector(".badge2");
 const badgeUnComplate = document.querySelector(".badge3");
 
-
-const todos = [];
-
+const localTodos = JSON.parse(window.localStorage.getItem("list"));
+const todos = localTodos || [];
+renderTodo(todos, elList)
 
 elList.addEventListener("click", evt => {
     if(evt.target.matches(".delete-item")){
         const btnId = evt.target.dataset.todoId;
         const findIndexArr = todos.findIndex(todo => todo.id == btnId);
         todos.splice(findIndexArr , 1);
-
+        window.localStorage.setItem("list" , JSON.stringify(todos));
         renderTodo(todos, elList);
 
     }
@@ -33,6 +33,7 @@ elList.addEventListener("click", evt => {
         const findTodo = todos.find(todo => todo.id == checkedId);
 
         findTodo.isComplete = !findTodo.isComplete;
+        window.localStorage.setItem("list" , JSON.stringify(todos));
 
         renderTodo(todos, elList);
     }
@@ -104,7 +105,7 @@ elForm.addEventListener("submit", evt => {
     todos.push(todo);
 
     renderTodo(todos,elList);
-
+    window.localStorage.setItem("list" , JSON.stringify(todos));
     elInput.value = "";
 
 });
