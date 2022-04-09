@@ -14,6 +14,8 @@ const badgeAll = document.querySelector(".badge1");
 const badgeComplate = document.querySelector(".badge2");
 const badgeUnComplate = document.querySelector(".badge3");
 
+const templateTodo = document.querySelector(".template").content;
+
 const localTodos = JSON.parse(window.localStorage.getItem("list"));
 const todos = localTodos || [];
 renderTodo(todos, elList)
@@ -56,38 +58,49 @@ function renderTodo(arr, element) {
 
      badgeUnComplate.textContent = countAll - countComplate;
 
+     const fragment = document.createDocumentFragment()
 
     arr.forEach(todo => {
-        const newItem = document.createElement("li");
-        const newButton = document.createElement("button");
-        const inputCheck = document.createElement("input");
+
+        const clonedTemp = templateTodo.cloneNode(true);
+
+        clonedTemp.querySelector(".list-item").textContent = todo.title;
+        clonedTemp.querySelector(".todo-checked").dataset.todoId = todo.id;
+        clonedTemp.querySelector(".delete-item").dataset.todoId = todo.id;
 
 
-        newItem.textContent = todo.title;
-
-        if(todo.isComplete){
-            inputCheck.checked = true;
-            newItem.style.textDecoration = "line-through";
-        }
+        fragment.appendChild(clonedTemp);
+        // const newItem = document.createElement("li");
+        // const newButton = document.createElement("button");
+        // const inputCheck = document.createElement("input");
 
 
+        // newItem.textContent = todo.title;
 
-        inputCheck.type = "checkbox";
-        inputCheck.classList.add("todo-checked")
-
-        newButton.textContent = "Delete";
-        newButton.classList.add("delete-item")
-        newButton.dataset.todoId = todo.id;
-        inputCheck.dataset.todoId = todo.id;
+        // if(todo.isComplete){
+        //     inputCheck.checked = true;
+        //     newItem.style.textDecoration = "line-through";
+        // }
 
 
-        newItem.appendChild(inputCheck);
-        newItem.appendChild(newButton);
 
-        element.appendChild(newItem);
+        // inputCheck.type = "checkbox";
+        // inputCheck.classList.add("todo-checked")
+
+        // newButton.textContent = "Delete";
+        // newButton.classList.add("delete-item")
+        // newButton.dataset.todoId = todo.id;
+        // inputCheck.dataset.todoId = todo.id;
+
+
+        // newItem.appendChild(inputCheck);
+        // newItem.appendChild(newButton);
+
+        // element.appendChild(newItem);
 
 
     });
+    elList.appendChild(fragment);
 }
 
 
